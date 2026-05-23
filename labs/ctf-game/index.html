@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f172a">
-  <title>Email Lifecycle Business Logic Bug CTF Lab</title>
+  <title>Email Lifecycle Business Logic Bug - Realistic CTF Simulation</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/ctf-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -13,46 +13,58 @@
   <main class="app">
     <section class="hero">
       <div>
-        <p class="eyebrow">Bug Report CTF</p>
+        <p class="eyebrow">Realistic Bug Simulation</p>
         <h1>Email Lifecycle Business Logic Bug</h1>
-        <p class="lede">A deleted account's email address remains reserved as if the account were still active, preventing reuse or reinvitation.</p>
+        <p class="lede">Create an account, delete it, then prove the deleted email is still blocked as if it belonged to an active account.</p>
       </div>
-      <div class="terminal" aria-label="Mock lab terminal">
+      <div class="terminal">
         <div class="bar"><span></span><span></span><span></span></div>
-        <pre><code id="terminal-code">loading mock scenario...</code></pre>
-        <div class="scan"></div>
+        <pre><code id="event-log">Lab booted. Interact with the mock app to find the bug.</code></pre>
       </div>
     </section>
 
     <section class="hud">
-      <div><span>Score</span><strong id="score">0</strong></div>
-      <div><span>Lives</span><strong id="lives">3</strong></div>
-      <div><span>Mission</span><strong><span id="mission">1</span>/3</strong></div>
       <div><span>Severity</span><strong>Medium</strong></div>
+      <div><span>Mode</span><strong>Mock App</strong></div>
+      <div><span>Status</span><strong id="status">Hunting</strong></div>
+      <div><span>Flag</span><strong id="flag-state">Locked</strong></div>
     </section>
 
     <section class="layout">
       <article class="card">
-        <p id="type" class="pill">Business Logic / Account Lifecycle</p>
-        <h2 id="question">Question</h2>
-        <pre class="snippet"><code id="snippet"></code></pre>
-        <div id="choices" class="choices"></div>
-        <div class="actions">
-          <button id="hint" class="ghost" type="button">Hint</button>
-          <button id="next" class="primary" type="button" disabled>Next</button>
+        <div class="card-head">
+          <p class="pill">Goal</p>
+          <h2>Find the lifecycle bug and unlock the flag.</h2>
+          <p class="muted">Everything here is local mock data. No real target is contacted.</p>
         </div>
-        <p id="feedback" class="feedback" aria-live="polite"></p>
+        <div id="lab-root"></div>
       </article>
 
       <aside class="card intel">
         <h2>Analyst Notes</h2>
-        <p><strong>Expected:</strong> Deleted accounts should not block normal reuse unless a clearly documented cooldown or fraud-control policy exists.</p>
-        <p><strong>Actual:</strong> The system appears to check only whether an email exists, without filtering for active versus deleted state.</p>
-        <p>Complete the missions to reveal the flag.</p>
+        <p><strong>Expected:</strong> A deleted account should release the email or apply a clear temporary cooldown.</p>
+        <p><strong>Actual:</strong> The mock backend checks whether the email exists anywhere, including deleted records.</p>
+        <p class="muted">When you reproduce the vulnerable behavior, the flag unlocks.</p>
         <div id="flag" class="flag hidden"></div>
       </aside>
     </section>
   </main>
+  <script>
+    window.CTF_SCENARIO = {
+  "slug": "email-lifecycle-business-logic-bug",
+  "title": "Email Lifecycle Business Logic Bug",
+  "kind": "emailLifecycle",
+  "severity": "Medium",
+  "flag": "FLAG{DELETED_USERS_SHOULD_NOT_KEEP_EMAILS_LOCKED}",
+  "brief": "Create an account, delete it, then prove the deleted email is still blocked as if it belonged to an active account.",
+  "goal": "Find the lifecycle bug and unlock the flag.",
+  "expected": "A deleted account should release the email or apply a clear temporary cooldown.",
+  "actual": "The mock backend checks whether the email exists anywhere, including deleted records.",
+  "seed": {
+    "email": "student@example.test"
+  }
+};
+  </script>
   <script src="app.js"></script>
 </body>
 </html>

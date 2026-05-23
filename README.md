@@ -2,8 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Bug_Report-Cybersecurity-0078D4?style=for-the-badge" alt="Bug Report">
-  <img src="https://img.shields.io/badge/CTF_Lab-Playable-22C55E?style=for-the-badge" alt="CTF Lab">
-  <img src="https://img.shields.io/badge/Category-Business_Logic_%2F_Account_Lifecycle-F97316?style=for-the-badge" alt="Business Logic / Account Lifecycle">
+  <img src="https://img.shields.io/badge/CTF_Lab-Realistic_Simulation-22C55E?style=for-the-badge" alt="Realistic CTF Simulation">
   <img src="https://img.shields.io/badge/Severity-Medium-DC2626?style=for-the-badge" alt="Medium">
 </p>
 
@@ -11,21 +10,11 @@
 
 ## Overview
 
-A deleted account's email address remains reserved as if the account were still active, preventing reuse or reinvitation.
+Create an account, delete it, then prove the deleted email is still blocked as if it belonged to an active account.
 
-This repository is a **sanitized educational case study**. It does not target a real company or live system. The included lab uses mock data so students can safely understand the bug class.
+This repository is a **sanitized educational case study**. It does not target a real company or live system. The CTF lab is a mock vulnerable app where the flag unlocks only after reproducing the simulated bug.
 
-## Quick Facts
-
-| Field | Value |
-|---|---|
-| Category | Business Logic / Account Lifecycle |
-| Severity | Medium |
-| Related CWE | CWE-664: Improper Control of a Resource Through its Lifetime |
-| Lab | Browser-based CTF |
-| Flag Style | `FLAG{...}` |
-
-## Play the CTF Lab
+## Play the CTF Simulation
 
 Run locally:
 
@@ -39,7 +28,15 @@ Open:
 http://localhost:8000/labs/ctf-game/
 ```
 
-Goal: solve the three missions and reveal the flag.
+GitHub Pages:
+
+```text
+https://mialmashahreh22.github.io/email-lifecycle-business-logic-bug/labs/ctf-game/
+```
+
+## What You Must Do
+
+Find the lifecycle bug and unlock the flag.
 
 ## Report
 
@@ -48,12 +45,6 @@ Read the full report:
 ```text
 report/BUG-REPORT.md
 ```
-
-## Impact Summary
-
-- Users cannot reuse their own email after deleting an account.
-- Admins cannot reinvite users who leave and return.
-- The platform creates a permanent account lifecycle mismatch.
 
 ## Repository Structure
 
